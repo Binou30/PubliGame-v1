@@ -1,17 +1,5 @@
 <?php
 
-if (get_magic_quotes_gpc()) {
-    function nettoyer_array(&$array) {
-        foreach ($array as $key => $val) {
-            if (is_array($val)) {
-                nettoyer_array($array[$key]);
-            } else {
-                $array[$key] = stripslashes($val);
-            }
-        }
-    }
-    nettoyer_array($_POST);
-}
 header('Content-Type: text/html; charset=utf-8');
 session_start();
 $uploads_dir = 'uploads';
