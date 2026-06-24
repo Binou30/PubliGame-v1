@@ -1,0 +1,9 @@
+A faire publigame.free.fr :
+
+- Résoudre problème majuscule/minuscules --> publies.php
+- Résoudre problème suppression projet aucun fichier trouvé --> publies.php
+- Vérifier copyright et décaler textes projet publié vers la droite --> publies.php
+- Mettre à jour la supression du compte et la vérification --> deleteaccount.php
+- Mettre à jour dynamiquement la position des éléments peut importe l'appareil utilisé --> tts les fichiers
+- Mettre tous les fichiers du premier publigame dans un dossier "v1" dans le google drive, git hub et le ftp --> nouvelle adresse : publigame.pages-perso.free.fr/v1
+- Créer dossier "v2é dans le google drive et le ftp --> addresse du publigame v2 : publigame.pages-perso.free.fr/v2
