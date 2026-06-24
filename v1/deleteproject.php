@@ -10,9 +10,11 @@ $vote_dir = 'votes';
 $desc_dir = 'descriptions/';
 $upload_dir = 'uploads/';
 
-if (!isset($_GET['fichier'])) {
+if (!isset($_POST['fichier'])) {
     die("Aucun fichier spécifié.");
 }
+
+$fichier = basename($_POST['fichier']);
 
 $fichier = basename($_GET['fichier']);
 $description_file = $desc_dir . $fichier . '.txt';
