@@ -9,6 +9,13 @@ Pour votre information, créer un compte sur PubliGame ne demande pas d'adresse 
 
 Bonne exploration!
 
-ATTENTION : Ce site étant mal codé, une nouvelle version sera créé. Vous pourrez quand même aller sur publigame mais il y a des bugs. 
+## Mode d'emploi :
 
-NE PAS UTILISER SUR TÉLÉPHONE !
+- Sur un hébergeur de sites, ajoutez tous les fihciers php. Créez un dossier static et mettez le favicon et le site.css dedans. Crées aussi 6 autres fichiers respectivements nommés :
+   comments 
+	 descriptions	 
+	 echanges 
+	 sessions
+	 uploads
+	 votes
+- Vous pouvez maintenant accéder au site.
