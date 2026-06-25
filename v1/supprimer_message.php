@@ -8,7 +8,6 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
     exit;
 }
 
-// Lire les messages
 function lire_messages($fichier) {
     $messages = array();
     if (file_exists($fichier)) {
@@ -30,7 +29,6 @@ function lire_messages($fichier) {
     return $messages;
 }
 
-// Réécrire tous les messages sauf celui à supprimer
 function ecrire_messages($fichier, $messages) {
     $fp = fopen($fichier, 'w');
     if ($fp) {
