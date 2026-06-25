@@ -1,5 +1,4 @@
 <?php
-// Pied de page centralisé — affiche l'année courante et le nom
 ?>
 <footer class="site-footer">
     <div class="footer-inner">
