@@ -12,7 +12,7 @@ if (!isset($_POST['nom_fichier'])) {
 }
 
 $nom_fichier = basename($_POST['nom_fichier']);
-$comments_dir = 'comments/';
+$comments_dir = 'comments';
 $comment_file = $comments_dir . '/' . $nom_fichier . '.txt';
 
 // Création dossier comments si inexistant
