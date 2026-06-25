@@ -9,6 +9,7 @@ echo '<!-- Début du script -->';
 $messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
 unset($_SESSION['messages']);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>  
