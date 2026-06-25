@@ -6,9 +6,9 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-$vote_dir = 'votes/';
-$desc_dir = 'descriptions/';
-$upload_dir = 'uploads/';
+$vote_dir = 'votes';
+$desc_dir = 'descriptions';
+$upload_dir = 'uploads';
 
 if (!isset($_POST['fichier'])) {
     die("Aucun fichier spécifié.");
