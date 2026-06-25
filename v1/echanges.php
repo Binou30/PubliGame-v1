@@ -70,6 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['message'])) {
 $messages = array_reverse(lire_messages($echanges_file));
 ?>
 
+<?php if (isset($_GET['deleted'])): ?>
+	<script>
+	alert("Message supprimé avec succès !");
+	</script>
+	<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
