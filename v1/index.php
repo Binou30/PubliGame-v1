@@ -4,8 +4,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
-echo '<!-- Début du script -->';
-
 $messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
 unset($_SESSION['messages']);
 ?>
