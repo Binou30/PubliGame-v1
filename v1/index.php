@@ -92,7 +92,7 @@ unset($_SESSION['messages']);
             }
         }
         html {
-            overflow: hidden;
+            overflow-x: hidden;
         }
         body {
             margin: 0;
