@@ -16,7 +16,6 @@ if (!isset($_POST['fichier'])) {
 
 $fichier = basename($_POST['fichier']);
 
-$fichier = basename($_GET['fichier']);
 $description_file = $desc_dir . $fichier . '.txt';
 $upload_file = $upload_dir . $fichier;
 $vote_file = $vote_dir . '/' . $fichier . '.txt';
@@ -28,9 +27,10 @@ if (!file_exists($description_file)) {
 
 $lines = file($description_file);
 $author = '';
+
 foreach ($lines as $line) {
-    if (stripos($line, 'Auteur :') === 0) {
-        $author = trim(substr($line, 7));
+    if (preg_match('/^Auteur\s*:\s*(.+)$/i', trim($line), $matches)) {
+        $author = trim($matches[1]);
         break;
     }
 }
