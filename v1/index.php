@@ -185,7 +185,7 @@ unset($_SESSION['messages']);
     ?>
     <?php if (isset($_GET['msg']) && $_GET['msg'] == 'compte_supprime'): ?>
     <script>
-        alert("✅ Compte supprimé avec succès !");
+        alert("Compte supprimé avec succès !");
     </script>
     <?php endif; ?>
 
