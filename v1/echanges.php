@@ -10,12 +10,10 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
 $echanges_dir = 'echanges';
 $echanges_file = $echanges_dir . '/echanges.txt';
 
-// Création dossier si inexistant
 if (!file_exists($echanges_dir)) {
     mkdir($echanges_dir, 0777);
 }
 
-// Lire les messages
 function lire_messages($fichier) {
     $messages = array();
     if (file_exists($fichier)) {
@@ -37,7 +35,6 @@ function lire_messages($fichier) {
     return $messages;
 }
 
-// Écrire les messages
 function ecrire_messages($fichier, $messages) {
     $fp = fopen($fichier, 'w');
     if ($fp) {
@@ -49,7 +46,6 @@ function ecrire_messages($fichier, $messages) {
     }
 }
 
-// Traitement POST pour ajouter un message
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['message'])) {
     $texte = trim($_POST['message']);
     if ($texte != '') {
@@ -66,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['message'])) {
     }
 }
 
-// Lire messages pour affichage
 $messages = array_reverse(lire_messages($echanges_file));
 ?>
 
