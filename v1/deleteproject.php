@@ -16,8 +16,8 @@ if (!isset($_POST['fichier'])) {
 
 $fichier = basename($_POST['fichier']);
 
-$description_file = $desc_dir . $fichier . '.txt';
-$upload_file = $upload_dir . $fichier;
+$description_file = $desc_dir . '/' . $fichier . '.txt';
+$upload_file = $upload_dir . '/' . $fichier;
 $vote_file = $vote_dir . '/' . $fichier . '.txt';
 
 // Lire l'auteur depuis le fichier description
