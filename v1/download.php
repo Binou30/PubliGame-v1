@@ -1,5 +1,5 @@
 <?php
-$dossier = 'uploads/';
+$dossier = 'uploads';
 
 if (!isset($_GET['f'])) {
     die('Fichier non spécifié.');
