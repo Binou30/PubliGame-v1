@@ -13,8 +13,28 @@ $uploads_dir = 'uploads';
 $desc_dir = 'descriptions';
 $votes_dir = 'votes';
 $comments_dir = 'comments';
+$echanges_file = 'echanges/echanges.txt';
 
 $found = false;
+
+if (file_exists($echanges_file)) {
+    $lines = file($echanges_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $new_lines = [];
+
+    foreach ($lines as $line) {
+        $parts = explode('|||', $line);
+
+        if (count($parts) == 3) {
+            $auteur = $parts[0];
+
+            if (strcasecmp($auteur, $username) !== 0) {
+                $new_lines[] = $line;
+            }
+        }
+    }
+
+    file_put_contents($echanges_file, implode("\n", $new_lines) . "\n");
+}
 
 if (file_exists($user_file) && is_readable($user_file)) {
 
