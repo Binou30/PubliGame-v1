@@ -73,10 +73,11 @@ if (is_dir($desc_dir)) {
 session_unset();
 session_destroy();
 
+/* IMPORTANT : éviter page blanche même si bug header */
 if ($found) {
-    header('Location: index.php?msg=compte_supprime');
+	die("<script>alert('Compte supprimé avec succès !'); window.location.href='index.php';</script>");
 } else {
-    header('Location: index.php?msg=compte_introuvable');
+    die("<script>alert('Compte introuvable !'); window.location.href='index.php';</script>");
 }
 
 exit;
