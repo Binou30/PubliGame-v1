@@ -183,17 +183,6 @@ unset($_SESSION['messages']);
         echo '<script>alert("Projet publié avec succès!");</script>';
     }
     ?>
-    <?php if (isset($_GET['msg']) && $_GET['msg'] == 'compte_supprime'): ?>
-    <script>
-        alert("Compte supprimé avec succès !");
-    </script>
-    <?php endif; ?>
-
-    <?php if (isset($_GET['msg']) && $_GET['msg'] == 'compte_introuvable'): ?>
-    <script>
-        alert("⚠️ Compte introuvable.");
-    </script>
-    <?php endif; ?>
 </body>
 <style>
 @import url("static/site.css");
