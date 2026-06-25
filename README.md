@@ -11,7 +11,7 @@ Bonne exploration!
 
 ## Mode d'emploi :
 
-- Sur un hébergeur de sites, ajoutez tous les fihciers php. Créez un dossier static et mettez le favicon et le site.css dedans. Crées aussi 6 autres fichiers respectivements nommés :
+- Sur un hébergeur de sites, ajoutez tous les fichiers php. Créez un dossier static et mettez le favicon et le site.css dedans. Crées aussi 6 autres fichiers respectivements nommés :
    comments 
 	 descriptions	 
 	 echanges 
