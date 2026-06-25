@@ -1,5 +1,6 @@
 <?php
 ?>
+
 <footer class="site-footer">
     <div class="footer-inner">
         <h6 class="copyright"><?php echo '©'.date('Y').' - Alban DOINEL'; ?></h6>
