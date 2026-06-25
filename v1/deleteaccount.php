@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -8,17 +7,23 @@ if (!isset($_SESSION['username'])) {
 }
 
 $username = $_SESSION['username'];
+
 $user_file = 'users.txt';
+$uploads_dir = 'uploads';
+$desc_dir = 'descriptions';
+$votes_dir = 'votes';
+$comments_dir = 'comments';
+
 $found = false;
 
-// Supprimer le compte de users.txt
-if (file_exists($user_file)) {
-    $lines = file($user_file);
-    $new_lines = array();
+if (file_exists($user_file) && is_readable($user_file)) {
+
+    $lines = file($user_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $new_lines = [];
 
     foreach ($lines as $line) {
-        $line = trim($line);
-        $parts = explode(':', $line);
+        $parts = explode(':', trim($line));
+
         if (count($parts) >= 2) {
             if (strcasecmp($parts[0], $username) !== 0) {
                 $new_lines[] = $line;
@@ -28,68 +33,52 @@ if (file_exists($user_file)) {
         }
     }
 
-    $fp = fopen($user_file, 'w');
-    if ($fp) {
-        foreach ($new_lines as $newline) {
-            fwrite($fp, $newline . "\n");
-        }
-        fclose($fp);
+    if (is_writable($user_file)) {
+        file_put_contents($user_file, implode("\n", $new_lines) . "\n");
     }
 }
 
-// Supprimer les projets publiés par cet utilisateur
-$uploads_dir = 'uploads';
-$desc_dir = 'descriptions';
-$votes_dir = 'votes';
-$comments_dir = 'comments';
-
 if (is_dir($desc_dir)) {
     $desc_files = scandir($desc_dir);
+
     foreach ($desc_files as $desc_file) {
         if ($desc_file === '.' || $desc_file === '..') continue;
-        
+
         $desc_path = $desc_dir . '/' . $desc_file;
-        if (is_file($desc_path)) {
-            $content = file_get_contents($desc_path);
-            if (preg_match('/Auteur\s*:\s*(.+)/i', $content, $matches)) {
-                $auteur = trim($matches[1]);
-                // Comparaison insensible à la casse
-                if (strcasecmp($auteur, $username) === 0) {
-                    // Récupérer le nom du fichier uploadé
-                    $nom_fichier = basename($desc_file, '.txt');
-                    
-                    // Supprimer le fichier uploadé
-                    $upload_path = $uploads_dir . '/' . $nom_fichier;
-                    if (file_exists($upload_path)) {
-                        unlink($upload_path);
-                    }
-                    
-                    // Supprimer la description
-                    unlink($desc_path);
-                    
-                    // Supprimer les votes
-                    $votes_path = $votes_dir . '/' . $nom_fichier . '.txt';
-                    if (file_exists($votes_path)) {
-                        unlink($votes_path);
-                    }
-                    
-                    // Supprimer les commentaires
-                    $comments_path = $comments_dir . '/' . $nom_fichier . '.txt';
-                    if (file_exists($comments_path)) {
-                        unlink($comments_path);
-                    }
-                }
+
+        if (!is_file($desc_path)) continue;
+
+        $content = file_get_contents($desc_path);
+
+        if (preg_match('/Auteur\s*:\s*(.+)/i', $content, $matches)) {
+            $auteur = trim($matches[1]);
+
+            if (strcasecmp($auteur, $username) === 0) {
+
+                $nom_fichier = basename($desc_file, '.txt');
+
+                $upload_path = $uploads_dir . '/' . $nom_fichier;
+                $votes_path = $votes_dir . '/' . $nom_fichier . '.txt';
+                $comments_path = $comments_dir . '/' . $nom_fichier . '.txt';
+
+                if (file_exists($upload_path)) unlink($upload_path);
+                if (file_exists($desc_path)) unlink($desc_path);
+                if (file_exists($votes_path)) unlink($votes_path);
+                if (file_exists($comments_path)) unlink($comments_path);
             }
         }
     }
 }
 
+session_unset();
 session_destroy();
 
+/* IMPORTANT : éviter page blanche même si bug header */
 if ($found) {
     header('Location: index.php?msg=compte_supprime');
 } else {
     header('Location: index.php?msg=compte_introuvable');
 }
+
 exit;
 ?>
