@@ -9,10 +9,10 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 $user_file = 'users.txt';
-$uploads_dir = 'uploads/';
-$desc_dir = 'descriptions/';
-$votes_dir = 'votes/';
-$comments_dir = 'comments/';
+$uploads_dir = 'uploads';
+$desc_dir = 'descriptions';
+$votes_dir = 'votes';
+$comments_dir = 'comments';
 
 $found = false;
 
