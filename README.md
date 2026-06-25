@@ -8,14 +8,3 @@ envoyant des messages sur un forum. Bref, pour accéder à Publigame, allez sur 
 Pour votre information, créer un compte sur PubliGame ne demande pas d'adresse mail, donc aucune donnée personnelle ne sera divulguée.
 
 Bonne exploration!
-
-## Mode d'emploi :
-
-- Sur un hébergeur de sites, ajoutez tous les fichiers php. Créez un dossier static et mettez le favicon et le site.css dedans. Crées aussi 6 autres fichiers respectivements nommés :
-   comments 
-	 descriptions	 
-	 echanges 
-	 sessions
-	 uploads
-	 votes
-- Vous pouvez maintenant accéder au site.
