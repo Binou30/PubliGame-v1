@@ -14,13 +14,11 @@ $displayUsername = trim($_SESSION['username']);
 $username = strtolower($displayUsername); // Normaliser en minuscules pour la clé de vote
 $vote_file = $vote_dir . '/' . $fichier . '.txt';
 
-// Initialiser
 $likes = 0;
 $dislikes = 0;
 $user_votes = array();
 $user_names = array();
 
-// Lire fichier si existe
 if (file_exists($vote_file)) {
     $lines = file($vote_file);
     foreach ($lines as $line) {
@@ -38,11 +36,9 @@ if (file_exists($vote_file)) {
     }
 }
 
-// Traitement du vote
 $ancien_vote = isset($user_votes[$username]) ? $user_votes[$username] : null;
 
 if ($ancien_vote === $type_vote) {
-    // Même vote → annuler
     if ($type_vote === 'like') {
         $likes--;
     } else {
@@ -50,7 +46,6 @@ if ($ancien_vote === $type_vote) {
     }
     unset($user_votes[$username]);
 } else {
-    // Changement de vote
     if ($ancien_vote === 'like') {
         $likes--;
     }
@@ -68,7 +63,6 @@ if ($ancien_vote === $type_vote) {
     $user_votes[$username] = $type_vote;
 }
 
-// Sauvegarde
 $fp = fopen($vote_file, 'w');
 if ($fp) {
     fwrite($fp, "likes=$likes\n");
@@ -82,7 +76,6 @@ if ($fp) {
     die("Erreur d’écriture.");
 }
 
-// Redirection
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit;
 ?>
