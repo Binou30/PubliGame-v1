@@ -48,8 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['index'])) {
 
     if (isset($messages[$index]) && $messages[$index]['auteur'] == $_SESSION['username']) {
         unset($messages[$index]);
-        $messages = array_values($messages); // Réindexer
+        $messages = array_values($messages);
         ecrire_messages($echanges_file, $messages);
+
+        header('Location: echanges.php?deleted=1');
+        exit;
     }
 }
 
