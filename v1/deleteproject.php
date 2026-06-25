@@ -20,7 +20,6 @@ $description_file = $desc_dir . '/' . $fichier . '.txt';
 $upload_file = $upload_dir . '/' . $fichier;
 $vote_file = $vote_dir . '/' . $fichier . '.txt';
 
-// Lire l'auteur depuis le fichier description
 if (!file_exists($description_file)) {
     die("<script>alert('Fichier description introuvable !'); window.location.href='index.php';</script>");
 }
@@ -35,27 +34,22 @@ foreach ($lines as $line) {
     }
 }
 
-// Comparaison insensible à la casse
 if (strtolower($_SESSION['username']) !== strtolower($author)) {
     die("<script>alert('Vous n\'êtes pas autorisé à supprimer ce projet.'); window.location.href='index.php';</script>");
 }
 
-// Supprimer le fichier uploadé
 if (file_exists($upload_file)) {
     unlink($upload_file);
 }
 
-// Supprimer le fichier description
 if (file_exists($description_file)) {
     unlink($description_file);
 }
 
-// Supprimer le fichier votes
 if (file_exists($vote_file)) {
     unlink($vote_file);
 }
 
-// Fenêtre popup et retour à l'index
 echo "<script>
 alert('Projet supprimé avec succès !');
 window.location.href='index.php';
