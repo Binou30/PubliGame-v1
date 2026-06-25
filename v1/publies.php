@@ -2,9 +2,9 @@
 
 header('Content-Type: text/html; charset=utf-8');
 session_start();
-$uploads_dir = 'uploads';
-$desc_dir = 'descriptions';
-$votes_dir = 'votes';
+$uploads_dir = 'uploads/';
+$desc_dir = 'descriptions/';
+$votes_dir = 'votes/';
 
 function load_comments($filename) {
     $comments = array();
