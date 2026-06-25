@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-$vote_dir = 'votes';
+$vote_dir = 'votes/';
 $desc_dir = 'descriptions/';
 $upload_dir = 'uploads/';
 
