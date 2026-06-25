@@ -231,11 +231,11 @@ if ($dh) {
     }
 
     button:not([style*="background:none"]):not([style*="background: none"]):hover {
-        transform: translateY(-0.125rem);
-        box-shadow: 0 clamp(0.625rem, 2vw, 0.75rem) clamp(1.25rem, 3vw, 1.5rem) rgba(0, 0, 0, 0.35);
-        filter: brightness(1.05);
-        background-position: 100% 50%;
-    }
+		transform: translateY(-0.125rem);
+		box-shadow: 0 clamp(0.625rem, 2vw, 0.75rem) clamp(1.25rem, 3vw, 1.5rem) rgba(0, 0, 0, 0.35);
+		filter: brightness(1.05);
+		background-position: 100% 50%;
+	}
 
     button:not([style*="background:none"]):not([style*="background: none"]):active {
         transform: translateY(0);
@@ -313,31 +313,35 @@ if ($dh) {
         font-size: clamp(0.8rem, 2vw, 0.9rem);
         margin-left: clamp(0.5rem, 2vw, 0.625rem);
     }
-    .project-meta {
-        display: inline-flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: clamp(0.75rem, 2vw, 1rem);
-        margin-top: clamp(0.5rem, 1vw, 0.75rem);
-    }
-    .delete-project-form {
-        display: inline-flex;
-        align-items: center;
-    }
-    .delete-project-btn {
-        color: #8f3333;
-        background: none;
-        border: none;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 0;
-        font-size: clamp(1rem, 2vw, 1.1rem);
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		line-height: normal;
-		transform: translate(-3px, 32px);
-    }
+	.project-meta { 
+		display: inline-flex; 
+		flex-wrap: wrap; 
+		align-items: center; 
+		gap: clamp(0.75rem, 2vw, 1rem); 
+	} 
+	.delete-project-form { 
+		display: inline-block; 
+		margin: 0; 
+		padding: 0; 
+		position: relative; 
+		top: 32px; 
+		left: -3px; 
+	} 
+	.delete-project-btn { 
+		color: #8f3333; 
+		background: none; 
+		border: none; 
+		font-weight: bold; 
+		cursor: pointer; 
+		padding: 0; 
+		margin: 0; 
+		font-size: clamp(1rem, 2vw, 1.1rem); 
+		line-height: 1; 
+		display: inline-flex; 
+		align-items: center; 
+		justify-content: center; 
+		transition: transform 0.15s ease; 
+	}
     a.download-link {
         margin-left: 0;
         text-decoration: none;
