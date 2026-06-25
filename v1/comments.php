@@ -15,12 +15,10 @@ $nom_fichier = basename($_POST['nom_fichier']);
 $comments_dir = 'comments';
 $comment_file = $comments_dir . '/' . $nom_fichier . '.txt';
 
-// Création dossier comments si inexistant
 if (!is_dir($comments_dir)) {
     mkdir($comments_dir, 0755);
 }
 
-// Fonction simple pour charger les commentaires
 function load_comments($filename) {
     $comments = array();
     if (file_exists($filename)) {
@@ -49,12 +47,10 @@ if ($action == 'ajouter') {
     $date = date('Y-m-d H:i');
     $user = $_SESSION['username'];
 
-    // On enlève les pipes et sauts de ligne pour éviter la casse
     $texte = str_replace(array("\r", "\n", "|"), ' ', $texte);
 
     $ligne = $date . '|' . $user . '|' . $texte . "\n";
 
-    // Ajouter le commentaire à la fin du fichier
     $fp = fopen($comment_file, 'a');
     if ($fp) {
         fwrite($fp, $ligne);
@@ -63,7 +59,6 @@ if ($action == 'ajouter') {
         die('Impossible d\'écrire dans le fichier des commentaires.');
     }
 
-    // Retour à la page précédente
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
 }
@@ -76,10 +71,8 @@ if ($action == 'supprimer' && isset($_POST['commentaire_id'])) {
     if (strcasecmp($comments[$id]['user'], $_SESSION['username']) !== 0) {
         die('Suppression non autorisée.');
     }
-    // Supprimer le commentaire demandé
     unset($comments[$id]);
 
-    // Réécrire le fichier sans ce commentaire
     $fp = fopen($comment_file, 'w');
     if ($fp) {
         foreach ($comments as $c) {
