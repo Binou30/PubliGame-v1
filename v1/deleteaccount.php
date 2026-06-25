@@ -73,7 +73,6 @@ if (is_dir($desc_dir)) {
 session_unset();
 session_destroy();
 
-/* IMPORTANT : éviter page blanche même si bug header */
 if ($found) {
 	die("<script>alert('Compte supprimé avec succès !'); window.location.href='index.php';</script>");
 } else {
