@@ -332,10 +332,11 @@ if ($dh) {
         cursor: pointer;
         padding: 0;
         font-size: clamp(1rem, 2vw, 1.1rem);
-        line-height: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		line-height: normal;
+		transform: translate(-3px, 32px);
     }
     a.download-link {
         margin-left: 0;
