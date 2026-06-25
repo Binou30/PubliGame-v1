@@ -7,7 +7,7 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
     exit;
 }
 
-$echanges_dir = 'echanges';
+$echanges_dir = 'echanges/';
 $echanges_file = $echanges_dir . '/echanges.txt';
 
 // Création dossier si inexistant
